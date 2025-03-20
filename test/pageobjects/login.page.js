@@ -20,6 +20,15 @@ class LoginPage extends Page {
         return $('#login-button');
     }
 
+    get loginLogo () {
+        return $('.login_logo');
+    }
+
+
+    get errorMessage () {
+        return $('//h3[@data-test="error"]//button');
+    }
+
 
    
     async login (username, password) {
@@ -31,7 +40,7 @@ class LoginPage extends Page {
 
    
     open () {
-        return super.open('login');
+        return super.open('');
     }
 }
 
