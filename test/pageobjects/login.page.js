@@ -2,44 +2,40 @@ import { $ } from '@wdio/globals'
 import Page from './page.js';
 
 
-
-
 class LoginPage extends Page {
-   
-    get inputUsername () {
+
+    get inputUsername() {
         return $('#user-name');
     }
 
 
-    get inputPassword () {
+    get inputPassword() {
         return $('#password');
     }
 
 
-    get btnSubmit () {
+    get btnSubmit() {
         return $('#login-button');
     }
 
-    get loginLogo () {
+    get loginLogo() {
         return $('.login_logo');
     }
 
 
-    get errorMessage () {
+    get errorMessage() {
         return $('//h3[@data-test="error"]//button');
     }
 
 
-   
-    async login (username, password) {
+
+    async login(username, password) {
         await this.inputUsername.setValue(username);
         await this.inputPassword.setValue(password);
         await this.btnSubmit.click();
     }
 
-
-   
-    open () {
+  open() {
         return super.open('');
     }
 }
