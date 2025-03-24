@@ -33,7 +33,21 @@ class LoginPage extends Page {
         await this.inputUsername.setValue(username);
         await this.inputPassword.setValue(password);
         await this.btnSubmit.click();
+        await browser.pause(3000);
+       
     }
+    async loginLogoDisplay (){
+        await expect(this.loginLogo).toBeExisting();
+    }
+     
+
+
+    
+
+    async errorMessageDisplay (){
+        await expect(this.errorMessage).toBeExisting();
+    }
+     
 
   open() {
         return super.open('');
