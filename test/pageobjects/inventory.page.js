@@ -6,7 +6,7 @@ import Page from './page.js';
 class InventoryPage extends Page {
 
     get logo() {
-        return $('//div[text()="Swag Labs"]');
+        return $('span[class="title"]');
     }
 
     get hamburgereMenuIcon() {
@@ -25,14 +25,31 @@ class InventoryPage extends Page {
         return $('[src="/images/logo.svg"]');
     }
 
-    get addTOCart() {
+    get addTOCart1() {
         return $('button[id="add-to-cart-sauce-labs-backpack"]')
     }
 
-    get cartBtn() {
+    get addTOCart2() {
+        return $('#add-to-cart-sauce-labs-bike-light')
+    }
+
+    get addTOCart3() {
+        return $('[name="add-to-cart-sauce-labs-bolt-t-shirt"]')
+    }
+
+
+
+    get cartItem() {
         return $('//*[@id="shopping_cart_container"]/a/span')
     }
 
+    get cartBtn() {
+        return $('//*[@id="shopping_cart_container"]/a')
+    }
+    get cartItemlist(){
+        return $$("//div[@class='inventory_list']//a")
+
+    }
     get resetBtn() {
         return $('#reset_sidebar_link');
     }
@@ -48,17 +65,19 @@ class InventoryPage extends Page {
 
 
     async hamburgereMenu() {
+        await this.hamburgereMenuIcon.waitForDisplayed({ timeout: 2000 })
         await this.hamburgereMenuIcon.click();
-        await browser.pause(2000);
+       
     }
+    
 
-    async hamburgereMenuIconDisplayed() {
+   async hamburgereMenuIconDisplayed() {
         await expect(this.hamburgereMenuIcon).toBeDisplayed()
     }
 
     async logoutBtn() {
         await this.logOutBtn.click();
-        await browser.pause(3000);
+        await LoginPage.loginLogo.waitForDisplayed({ timeout: 2000 })
         await expect(LoginPage.loginLogo).toBeDisplayed();
     }
 
@@ -80,8 +99,21 @@ class InventoryPage extends Page {
         await expect(this.SauceLabLogo).toBeDisplayed();
     }
 
-    async addTOCartBtn() {
-        await this.addTOCart.click();
+    async addTOCartBtn1() {
+        await this.logo.waitForDisplayed({ timeout: 2000 })
+        await this.addTOCart1.click();
+    }
+    async addTOCartBtn2() {
+        await this.logo.waitForDisplayed({ timeout: 2000 })
+        await this.addTOCart2.click();
+    }
+    async addTOCartBtn3() {
+        await this.logo.waitForDisplayed({ timeout: 2000 })
+        await this.addTOCart3.click();
+    }
+
+    async cartItemContains() {
+        await expect(this.cartItem).toHaveText('1');
     }
 
     async resetBtnclick() {
@@ -89,7 +121,13 @@ class InventoryPage extends Page {
     }
 
     async logoDisplay() {
+        await this.logo.waitForDisplayed({ timeout: 3000 })
         await expect(this.logo).toBeExisting();
+    }
+
+    async cartBtnClick(){
+        await this.cartBtn.waitForDisplayed({ timeout: 3000 })
+        await this.cartBtn.click();
     }
 
 }

@@ -22,7 +22,7 @@ describe('Test hamburger menu button ', () => {
       await InventoryPage.clickOnAboutBtn();
       await InventoryPage.sauceLabLogoDisplayed();
       await browser.back();
-      await InventoryPage.addTOCartBtn();
+      await InventoryPage.addTOCartBtn1();
       await browser.pause(3000);
       await InventoryPage.cartBtnDisplay();
       await InventoryPage.hamburgereMenu();

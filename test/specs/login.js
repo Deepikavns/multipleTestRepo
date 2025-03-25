@@ -1,7 +1,5 @@
 
 import LoginPage from '../pageobjects/login.page.js'
-
-
 import InventoryPage from '../pageobjects/inventory.page.js'
 
 
