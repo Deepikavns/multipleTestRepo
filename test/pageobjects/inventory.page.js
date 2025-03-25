@@ -12,6 +12,7 @@ class InventoryPage extends Page {
     get hamburgereMenuIcon() {
         return $(' button[id="react-burger-menu-btn"]');
     }
+
     get allItemsbtn() {
         return $('//a[text()="All Items"]');
     }
@@ -19,14 +20,17 @@ class InventoryPage extends Page {
     get aboutbtn() {
         return $('//a[text()="About"]');
     }
+
     get SauceLabLogo() {
         return $('[src="/images/logo.svg"]');
     }
+
     get addTOCart() {
         return $('button[id="add-to-cart-sauce-labs-backpack"]')
     }
+
     get cartBtn() {
-        return $('//span[text()="1"]')
+        return $('//*[@id="shopping_cart_container"]/a/span')
     }
 
     get resetBtn() {
@@ -41,13 +45,15 @@ class InventoryPage extends Page {
         return $('//a[text()="Logout"]');
     }
 
+
+
     async hamburgereMenu() {
         await this.hamburgereMenuIcon.click();
         await browser.pause(2000);
     }
 
     async hamburgereMenuIconDisplayed() {
-        await this.hamburgereMenuIcon.isDisplayed()
+        await expect(this.hamburgereMenuIcon).toBeDisplayed()
     }
 
     async logoutBtn() {
@@ -60,19 +66,28 @@ class InventoryPage extends Page {
         await this.closeMenuBtn.click();
 
     }
+
     async clickOnAboutBtn() {
         if (await this.aboutbtn.isDisplayed())
             await this.aboutbtn.click();
     }
-    async sauceLabLogoDisplayed() {
-        await this.SauceLabLogo.isDisplayed();
+
+    async cartBtnDisplay() {
+        await expect(this.cartBtn).toBeDisplayed()
     }
+
+    async sauceLabLogoDisplayed() {
+        await expect(this.SauceLabLogo).toBeDisplayed();
+    }
+
     async addTOCartBtn() {
         await this.addTOCart.click();
     }
+
     async resetBtnclick() {
         await this.resetBtn.click();
     }
+
     async logoDisplay() {
         await expect(this.logo).toBeExisting();
     }

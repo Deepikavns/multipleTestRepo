@@ -8,11 +8,9 @@ class LoginPage extends Page {
         return $('#user-name');
     }
 
-
     get inputPassword() {
         return $('#password');
     }
-
 
     get btnSubmit() {
         return $('#login-button');
@@ -21,7 +19,6 @@ class LoginPage extends Page {
     get loginLogo() {
         return $('.login_logo');
     }
-
 
     get errorMessage() {
         return $('//h3[@data-test="error"]//button');
@@ -33,23 +30,20 @@ class LoginPage extends Page {
         await this.inputUsername.setValue(username);
         await this.inputPassword.setValue(password);
         await this.btnSubmit.click();
-        await browser.pause(3000);
-       
+        await browser.pause(1000);
+
     }
-    async loginLogoDisplay (){
+
+    async loginLogoDisplay() {
         await expect(this.loginLogo).toBeExisting();
     }
-     
 
-
-    
-
-    async errorMessageDisplay (){
+    async errorMessageDisplay() {
         await expect(this.errorMessage).toBeExisting();
     }
-     
 
-  open() {
+
+    open() {
         return super.open('');
     }
 }
