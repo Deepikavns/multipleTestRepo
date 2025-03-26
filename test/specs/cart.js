@@ -12,6 +12,21 @@ describe('my cart application ', () => {
     });
 
 
+    it('Verify that the label "QTY" is displayed correctly on the screen', async () => {
+        await InventoryPage.addTOCartBtn1();
+        await InventoryPage.cartBtnClick();
+        await CartPage.yourCartDisplay();
+        await CartPage.quantityText();
+    });
+
+    it('Verify that the label "Description" is displayed correctly ', async () => {
+        await InventoryPage.addTOCartBtn1();
+        await InventoryPage.cartBtnClick();
+        await CartPage.yourCartDisplay();
+        await CartPage.descriptionText();
+
+    });
+
     it('Verify "Your Cart"functionality without additing item in the cart', async () => {
         await InventoryPage.cartBtnClick();
         await CartPage.yourCartDisplay();

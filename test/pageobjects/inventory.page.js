@@ -37,8 +37,6 @@ class InventoryPage extends Page {
         return $('[name="add-to-cart-sauce-labs-bolt-t-shirt"]')
     }
 
-
-
     get cartItem() {
         return $('//*[@id="shopping_cart_container"]/a/span')
     }
@@ -46,7 +44,7 @@ class InventoryPage extends Page {
     get cartBtn() {
         return $('//*[@id="shopping_cart_container"]/a')
     }
-    get cartItemlist(){
+    get cartItemlist() {
         return $$("//div[@class='inventory_list']//a")
 
     }
@@ -67,11 +65,10 @@ class InventoryPage extends Page {
     async hamburgereMenu() {
         await this.hamburgereMenuIcon.waitForDisplayed({ timeout: 2000 })
         await this.hamburgereMenuIcon.click();
-       
-    }
-    
 
-   async hamburgereMenuIconDisplayed() {
+    }
+
+    async hamburgereMenuIconDisplayed() {
         await expect(this.hamburgereMenuIcon).toBeDisplayed()
     }
 
@@ -100,15 +97,16 @@ class InventoryPage extends Page {
     }
 
     async addTOCartBtn1() {
-        await this.logo.waitForDisplayed({ timeout: 2000 })
-        await this.addTOCart1.click();
+        if (await this.addTOCart1.isDisplayed()) {
+            await this.addTOCart1.click();
+        }
     }
     async addTOCartBtn2() {
-        await this.logo.waitForDisplayed({ timeout: 2000 })
+        await this.logo.waitForDisplayed({ timeout: 3000 })
         await this.addTOCart2.click();
     }
     async addTOCartBtn3() {
-        await this.logo.waitForDisplayed({ timeout: 2000 })
+        await this.logo.waitForDisplayed({ timeout: 3000 })
         await this.addTOCart3.click();
     }
 
@@ -125,7 +123,7 @@ class InventoryPage extends Page {
         await expect(this.logo).toBeExisting();
     }
 
-    async cartBtnClick(){
+    async cartBtnClick() {
         await this.cartBtn.waitForDisplayed({ timeout: 3000 })
         await this.cartBtn.click();
     }

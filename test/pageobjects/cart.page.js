@@ -10,6 +10,13 @@ class CartPage extends Page {
         return $('#continue-shopping')
     }
 
+    get quantity() {
+        return $('//div[@class="cart_quantity"][text()="1"]')
+    }
+    get description() {
+        return $('//div[@class="inventory_item_desc"]')
+    }
+
     get checkOutBtn() {
         return $('button#checkout')
     }
@@ -42,11 +49,18 @@ class CartPage extends Page {
         await this.continueShoppingBtn.click();
     }
 
+    async quantityText() {
+        await expect(this.quantity).toBeDisplayed();
+    }
+
+    async descriptionText() {
+        await expect(this.description).toBeDisplayed();
+    }
+
     async clickOnCheckOutBtn() {
         await this.checkOutBtn.click();
 
-
-    }
+}
 }
 
 export default new CartPage();
